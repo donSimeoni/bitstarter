@@ -19,7 +19,6 @@ var assertFileExists = function(infile) {
 
 var cheerioHtmlFile = function(htmlfile) {
 if (program.url) {
-    console.log("It is a URL");
     return cheerio.load(htmlfile);
     } else {
     return cheerio.load(fs.readFileSync(htmlfile));
@@ -62,17 +61,12 @@ if (program.url) {
             this.retry(5000);
         } else {
 //      sys.puts(result);
-        console.log("page read 2 " + program.url);
-//	console.log(result);
        
 	var checkUrlJson = checkHtmlFile(result, program.checks);
 	var outUrlJson = JSON.stringify(checkUrlJson, null, 4);
 	console.log(outUrlJson);
-
-
 }});
 
-    console.log("If working");
 } else {
     var checkJson = checkHtmlFile(program.file, program.checks);
     var outJson = JSON.stringify(checkJson, null, 4);
